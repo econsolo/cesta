@@ -13,7 +13,24 @@
 
         <div class="row margin-top-10">
 
-          <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="width-100">
+              <mat-form-field appearance="outline" class="width-100">
+                <mat-label>&nbsp;Código</mat-label>
+                <input matInput type="text" [formControl]="form.controls.productcode" autocomplete="off" maxlength="6" />
+                <mat-error *ngIf="form.controls.productcode.invalid">
+                  <div class="error" *ngIf="form.controls.productcode.errors?.required">
+                    Campo obrigatório
+                  </div>
+                  <div class="error" *ngIf="form.controls.productcode.errors?.productcode">
+                    O código deve respeitar o formato "A0-000"
+                  </div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="width-100">
               <mat-form-field appearance="outline" class="width-100">
                 <mat-label>&nbsp;Nome</mat-label>
@@ -69,7 +86,7 @@
             <div class="width-100">
               <mat-form-field appearance="outline" class="width-100">
                 <mat-label>&nbsp;Valor Unitário</mat-label>
-                <input matInput type="text" [formControl]="form.controls.value" autocomplete="off" />
+                <input matInput type="number" [formControl]="form.controls.value" autocomplete="off" />
                 <mat-error *ngIf="form.controls.value.invalid">
                   <div class="error" *ngIf="form.controls.value.errors?.required">
                     Campo obrigatório
@@ -86,7 +103,7 @@
             <div class="width-100">
               <mat-form-field appearance="outline" class="width-100">
                 <mat-label>&nbsp;Quantidade</mat-label>
-                <input matInput type="text" [formControl]="form.controls.count" autocomplete="off" />
+                <input matInput type="number" [formControl]="form.controls.count" autocomplete="off" />
                 <mat-error *ngIf="form.controls.count.invalid">
                   <div class="error" *ngIf="form.controls.count.errors?.required">
                     Campo obrigatório
@@ -103,7 +120,7 @@
             <div class="width-100">
               <mat-form-field appearance="outline" class="width-100">
                 <mat-label>&nbsp;Valor Total</mat-label>
-                <input matInput type="text" [formControl]="form.controls.totalValue" />
+                <input matInput type="text" [formControl]="form.controls.totalValue" number />
               </mat-form-field>
             </div>
           </div>

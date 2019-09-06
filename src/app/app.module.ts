@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UtilModule } from './common/utils/util.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './common/utils/http.interceptor';
+import { RouteGuard } from './common/utils/route.guard';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,13 @@ import { Interceptor } from './common/utils/http.interceptor';
     HttpClientModule,
     UtilModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: Interceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+    },
+    RouteGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

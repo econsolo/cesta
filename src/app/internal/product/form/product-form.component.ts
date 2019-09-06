@@ -91,6 +91,7 @@ export class ProductFormComponent implements OnInit {
   private configureTotalValue(): void {
     const formControls = this.form.controls;
     formControls.totalValue.disable();
+    
     formControls.value.valueChanges.pipe(debounceTime(200)).subscribe((value: number) => {
       formControls.totalValue.setValue(formControls.count.value * value);
     });
@@ -103,6 +104,10 @@ export class ProductFormComponent implements OnInit {
   private createForm(): FormGroup {
     return this.builder.group({
       id: ['', []],
+      productcode: ['', [
+        Validators.required,
+        UtilService.validateProductCode
+      ]],
       name: ['', [
         Validators.required,
         Validators.maxLength(50)

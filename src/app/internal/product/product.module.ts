@@ -6,6 +6,7 @@ import { ProductFormComponent } from './form/product-form.component';
 import { ProductListComponent } from './list/product-list.component';
 import { MaterialModule } from 'src/app/core/material.module';
 import { ComponentsCommonModule } from 'src/app/common/components/components-common.module';
+import { DirectivesModule } from 'src/app/common/directives/directives.module';
 
 
 @NgModule({
@@ -15,12 +16,13 @@ import { ComponentsCommonModule } from 'src/app/common/components/components-com
     MaterialModule,
     ProductRoutingModule,
     ReactiveFormsModule,
-    ComponentsCommonModule
+    ComponentsCommonModule,
+    DirectivesModule
   ],
   providers: [
     {
       provide: LOCALE_ID,
-      useValue: "pt-BR"
+      useValue: 'en-BR'
     }
   ]
 })

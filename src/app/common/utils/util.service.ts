@@ -3,33 +3,45 @@ import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarDismiss } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { RouteStack } from '../models/route-stack';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { environment } from 'src/environments/environment';
+import { Auth } from '../models/auth.model';
 
 declare var swal: any;
 
 @Injectable()
 export class UtilService {
 
+  private routeStack = [] as RouteStack[];
+  private key: string = environment.login_key;
+
   constructor(private snackBar: MatSnackBar) { }
 
-  private routeStack = [] as RouteStack[];
+  static validateProductCode(control: AbstractControl): ValidationErrors | null {
+    const returnError = {productcode: true};
+    const value = control.value;
 
-  public save(user: any): void {
-    let users = JSON.parse(localStorage.getItem('users')) as any[];
+    if (!value) return returnError;
 
-    if (!users) {
-      users = [];
-    }
-    users.push(user);
+    if (value.length !== 6) return returnError;
 
-    localStorage.setItem('users', JSON.stringify(users));
+    if (!value.match(/[a-zA-Z]{1}[0-9]{1}-[0-9]{3}/g)) return returnError;
+
+    return null;
   }
 
-  public get(): any[] {
-    let users = JSON.parse(localStorage.getItem('users'));
-    if (!users) {
-      users = [];
-    }
-    return users;
+  public isLogged(): boolean {
+    const auth = localStorage.getItem(this.key);
+    return !!auth;
+  }
+
+  public setAuth(auth: Auth): void {
+    localStorage.clear();
+    localStorage.setItem(this.key, JSON.stringify(auth));
+  }
+
+  public getAuth(): Auth {
+    return JSON.parse(localStorage.getItem(this.key));
   }
 
   public showErrors(form: any): void {
