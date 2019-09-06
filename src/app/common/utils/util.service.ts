@@ -44,6 +44,10 @@ export class UtilService {
     return JSON.parse(localStorage.getItem(this.key));
   }
 
+  public logout(): void {
+    localStorage.clear();
+  }
+
   public showErrors(form: any): void {
     if (!form) {
       throw new Error('[showErrors] O FormGroup não deve estar nulo!');

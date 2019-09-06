@@ -33,6 +33,17 @@
         </span>
 
         <span class="fill-remaining-space"></span>
+
+        <button mat-button [matMenuTriggerFor]="menu">
+          Bem vindo, {{ auth.name }}
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            Sair
+          </button>
+        </mat-menu>
       </mat-toolbar>
 
       <div class="margin-8">

@@ -25,7 +25,8 @@ import { RouteGuard } from './common/utils/route.guard';
       useClass: Interceptor,
       multi: true
     },
-    RouteGuard],
+    RouteGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

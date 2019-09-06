@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatTableModule,
     MatDialogModule,
     MatSelectModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatMenuModule
   ],
   exports: [
     MatButtonModule,
@@ -41,7 +43,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatIconModule,
     MatTableModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ]
 })
 
