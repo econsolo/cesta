@@ -1,0 +1,44 @@
+<div id="content">
+  <mat-drawer-container [hasBackdrop]="true" class="height-100">
+    <mat-drawer #drawer [mode]="'over'">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Menu</span>
+          <span class="fill-remaining-space"></span>
+          <mat-icon (click)="drawer.toggle();" class="click">close</mat-icon>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
+      <mat-list>
+        <h3 matSubheader>Cesta</h3>
+
+        <mat-list-item *ngFor="let menu of menus" (click)="goTo(menu.path);drawer.close();" class="click">
+          <mat-icon matListIcon>
+            {{ menu.icon }}
+          </mat-icon>
+          <h4 matLine>
+            {{ menu.label }}
+          </h4>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+
+      </mat-list>
+
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-toolbar class="mat-elevation-z5">
+        <mat-icon (click)="drawer.toggle();" class="click">menu</mat-icon>&nbsp;
+        <span class="click">
+          Cesta
+        </span>
+
+        <span class="fill-remaining-space"></span>
+      </mat-toolbar>
+
+      <div class="margin-8">
+        <router-outlet></router-outlet>
+      </div>
+
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

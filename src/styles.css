@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.margin-top-10 {
+  margin-top: 10px !important;
+}
+
+table {
+  width: 100vw !important;
+}
+
+.width-100 {
+  width: 100% !important;
+}
+
+mat-list-item :hover {
+  background-color: #ddd;
+}
+
+.text-center {
+  text-align: center;
+}
+
+* {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
