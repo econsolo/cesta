@@ -30,6 +30,10 @@ mat-list-item :hover {
   text-align: center;
 }
 
+.click {
+  cursor: pointer;
+}
+
 * {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;

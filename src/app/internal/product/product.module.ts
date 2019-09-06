@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductFormComponent } from './form/product-form.component';
 import { ProductListComponent } from './list/product-list.component';
 import { MaterialModule } from 'src/app/core/material.module';
+import { ComponentsCommonModule } from 'src/app/common/components/components-common.module';
 
 
 @NgModule({
@@ -12,7 +13,15 @@ import { MaterialModule } from 'src/app/core/material.module';
   imports: [
     CommonModule,
     MaterialModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    ReactiveFormsModule,
+    ComponentsCommonModule
+  ],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: "pt-BR"
+    }
   ]
 })
 export class ProductModule { }

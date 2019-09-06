@@ -1,1 +1,140 @@
-<p>product-form works!</p>
+<div class="margin-top-10">
+
+  <form [formGroup]="form" novalidate (submit)="save(form.value)">
+
+    <mat-card>
+
+      <mat-card-header>
+        <mat-card-title>Produto</mat-card-title>
+        <mat-card-subtitle>{{ form.controls.id.value ? 'Atualize' : 'Cadastre' }} seu produto</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <div class="row margin-top-10">
+
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="width-100">
+              <mat-form-field appearance="outline" class="width-100">
+                <mat-label>&nbsp;Nome</mat-label>
+                <input matInput type="text" [formControl]="form.controls.name" autocomplete="off" />
+                <mat-error *ngIf="form.controls.name.invalid">
+                  <div class="error" *ngIf="form.controls.name.errors?.required">
+                    Campo obrigatório
+                  </div>
+                  <div class="error" *ngIf="form.controls.name.errors?.maxlength">
+                    Máximo de 50 caracteres
+                  </div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="width-100">
+              <mat-form-field appearance="outline" class="width-100">
+                <mat-label>&nbsp;Descrição</mat-label>
+                <input matInput type="text" [formControl]="form.controls.description" autocomplete="off" />
+                <mat-error *ngIf="form.controls.description.invalid">
+                  <div class="error" *ngIf="form.controls.description.errors?.required">
+                    Campo obrigatório
+                  </div>
+                  <div class="error" *ngIf="form.controls.description.errors?.maxlength">
+                    Máximo de 100 caracteres
+                  </div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="width-100">
+              <mat-form-field appearance="outline" class="width-100">
+                <mat-select placeholder="Escolha uma categoria" [formControl]="form.controls.category.controls.id"
+                  class="click">
+                  <mat-option *ngFor="let c of categories" [value]="c.id">
+                    {{ c.description }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls.category.controls.id.invalid">
+                  <div class="error" *ngIf="form.controls.category.controls.id.errors?.required">
+                    Campo obrigatório
+                  </div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="width-100">
+              <mat-form-field appearance="outline" class="width-100">
+                <mat-label>&nbsp;Valor Unitário</mat-label>
+                <input matInput type="text" [formControl]="form.controls.value" autocomplete="off" />
+                <mat-error *ngIf="form.controls.value.invalid">
+                  <div class="error" *ngIf="form.controls.value.errors?.required">
+                    Campo obrigatório
+                  </div>
+                  <div class="error" *ngIf="form.controls.value.errors?.minlength">
+                    Valor inválido
+                  </div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="width-100">
+              <mat-form-field appearance="outline" class="width-100">
+                <mat-label>&nbsp;Quantidade</mat-label>
+                <input matInput type="text" [formControl]="form.controls.count" autocomplete="off" />
+                <mat-error *ngIf="form.controls.count.invalid">
+                  <div class="error" *ngIf="form.controls.count.errors?.required">
+                    Campo obrigatório
+                  </div>
+                  <div class="error" *ngIf="form.controls.count.errors?.minlength">
+                    Quantidade inválida
+                  </div>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="width-100">
+              <mat-form-field appearance="outline" class="width-100">
+                <mat-label>&nbsp;Valor Total</mat-label>
+                <input matInput type="text" [formControl]="form.controls.totalValue" />
+              </mat-form-field>
+            </div>
+          </div>
+
+        </div>
+
+      </mat-card-content>
+
+
+      <mat-card-actions class="row">
+
+        <div class="row justify-content-between margin-top-10">
+          <div class="col-auto">
+            <button mat-flat-button color="warn" type="button" class="font-12" (click)="back()">
+              <mat-icon>close</mat-icon>&nbsp;
+              Cancelar
+            </button>
+          </div>
+          <div class="col-auto">
+            <button mat-flat-button color="primary" type="submit" class="font-12">
+              Salvar&nbsp;
+              <mat-icon>check</mat-icon>
+            </button>
+          </div>
+        </div>
+
+      </mat-card-actions>
+
+    </mat-card>
+
+
+  </form>
+
+</div>

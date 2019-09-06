@@ -1,4 +1,58 @@
 <div class="margin-top-10">
-  <h1>Works porra</h1>
+
+  <mat-card>
+
+    <mat-card-header>
+      <mat-card-title>Produtos</mat-card-title>
+      <mat-card-subtitle>Seus produtos cadastrados</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="row margin-top-10">
+
+        <table *ngIf="dataSource?.data.length" mat-table #table [dataSource]="dataSource"
+          class="width-100 mat-elevation-z8">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let element" (click)="openBottomSheet(element.id)"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="category.description">
+            <th mat-header-cell *matHeaderCellDef> Categoria </th>
+            <td mat-cell *matCellDef="let element" (click)="openBottomSheet(element.id)">
+              {{ element.category.description }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['name', 'category.description'];" class="click"></tr>
+        </table>
+
+        <div *ngIf="!dataSource?.data.length">
+          <h3>
+            Nenhum produto encontrado
+          </h3>
+        </div>
+
+      </div>
+
+    </mat-card-content>
+
+
+    <mat-card-actions class="row">
+
+      <div class="row justify-content-end margin-top-10">
+        <div class="col-auto">
+          <button mat-flat-button color="primary" type="button" class="font-12" (click)="goToForm('')">
+            Novo&nbsp;
+            <mat-icon>add_box</mat-icon>
+          </button>
+        </div>
+      </div>
+
+    </mat-card-actions>
+
+  </mat-card>
 
 </div>

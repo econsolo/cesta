@@ -5,3 +5,7 @@
 mat-drawer {
   width: 40vh;
 }
+
+.mat-drawer-content {
+  overflow: hidden !important;
+}
