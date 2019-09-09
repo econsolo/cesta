@@ -41,7 +41,7 @@ export class InternalComponent implements OnInit {
   private getMenus() {
     this.menus = [
       {
-        icon: 'help',
+        icon: 'shopping_cart',
         path: 'app/products/',
         label: 'Produtos'
       }

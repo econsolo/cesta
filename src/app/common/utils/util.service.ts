@@ -35,6 +35,20 @@ export class UtilService {
     return !!auth;
   }
 
+  public userHasRole(roles: string[]): boolean {
+    const auth = this.getAuth() as Auth;
+
+    if (!roles) return false;
+
+    let userHasRole = false;
+    for (var i = 0; i < roles.length; i++) {
+      const role = roles[i];
+      userHasRole = userHasRole || auth.roles.includes(role);
+    }
+
+    return userHasRole;
+  }
+
   public setAuth(auth: Auth): void {
     localStorage.clear();
     localStorage.setItem(this.key, JSON.stringify(auth));
